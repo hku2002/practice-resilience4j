@@ -23,6 +23,10 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation group: 'io.github.resilience4j', name: 'resilience4j-spring-boot2', version: '1.7.1'
+    implementation group: 'io.github.resilience4j', name: 'resilience4j-all', version: '1.7.1'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
