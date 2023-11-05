@@ -1,0 +1,18 @@
+spring:
+  application.name: circuit-breaker
+
+server:
+  port: 8080
+
+resilience4j.retry:
+  configs:
+    default:
+      maxAttempts: 3
+      waitDuration: 2000
+      retryExceptions:
+        - com.example.retry.common.exception.RetryException   # retryException에 지정된 예외는 재시도
+      ignoreExceptions:
+        - com.example.retry.common.exception.IgnoreException  # retryException에 지정되지 않은 예외는 ignoreException로 처리됨
+  instances:
+    simpleRetryConfig:
+      baseConfig: default
