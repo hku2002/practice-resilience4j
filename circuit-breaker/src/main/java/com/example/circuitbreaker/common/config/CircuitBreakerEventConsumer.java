@@ -28,11 +28,13 @@ public class CircuitBreakerEventConsumer {
             @Override
             public void onEntryRemovedEvent(EntryRemovedEvent<CircuitBreaker> entryRemoveEvent) {
                 log.info("RegistryEventConsumer.onEntryRemovedEvent");
+                entryRemoveEvent.getRemovedEntry().getEventPublisher().onEvent(event -> log.info(event.toString()));
             }
 
             @Override
             public void onEntryReplacedEvent(EntryReplacedEvent<CircuitBreaker> entryReplacedEvent) {
                 log.info("RegistryEventConsumer.onEntryReplacedEvent");
+                entryReplacedEvent.getNewEntry().getEventPublisher().onEvent(event -> log.info(event.toString()));
             }
         };
     }
